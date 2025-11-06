@@ -66,8 +66,6 @@ bool nextchar(char *c)
 }
 
 // ================= IN-MEMORY VFS (faithful to original file I/O semantics) =================
-// 목표: 알고리즘/흐름/경계/문자열 포맷을 "원본 그대로" 유지하고,
-//       .bcalmtmp/* 임시 파일만 메모리 내에 보관한다.
 
 struct MemFile
 {
@@ -186,7 +184,6 @@ public:
 	}
 };
 
-// 원본 lm.cpp의 유틸리티 시그니처를 VFS에 맞게 오버로드
 static inline std::string readn(VIn *in, int64_t n) { return in->readn_local(n); }
 static inline void copylm(VIn *in, int64_t n, VOut *out)
 {
@@ -578,7 +575,6 @@ void createoutfile(const char *namein, const char *nameout, const int k, const i
 			compactbucket(i, j, k, nameout, m);
 	}
 
-	// 최종 결과 .bcalmtmp/nameout -> 실제 nameout 파일로 "mv"에 해당
 	{
 		auto it = MEMFS.find(std::string(".bcalmtmp/") + nameout);
 		if (it != MEMFS.end())
