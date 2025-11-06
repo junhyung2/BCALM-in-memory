@@ -31,7 +31,6 @@ Nota Bene :
 Higher l mean lower memory but the algorithm will NOT work with l>10.
 
 In-Memory Version Notes:
-- This version does NOT require `ulimit -n` adjustments since it uses an in-memory virtual file system
 - No `.bcalmtmp/` directory is created on disk
 - All intermediate files are stored in RAM, which may increase memory usage but improves I/O performance
 - The algorithm, output format, and behavior are identical to the original disk-based version
